@@ -1,5 +1,5 @@
 import logging
-
+import json 
 import torch
 from transformers import AutoModelForSpeechSeq2Seq, AutoProcessor, pipeline
 
@@ -73,4 +73,4 @@ class SpeechToTextPipeline:
         logging.info("Transcribing audio...")
         result = pipe(audio_path)
         with open(trans_path, "w") as file:
-          file.write(result)
+          file.write(json.dumps(result))
